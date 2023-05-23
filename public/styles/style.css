@@ -1,0 +1,1902 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap");
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    padding: 0px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+section {
+    width: 100%;
+    float: left;
+}
+
+.themeRow {
+    width: 100%;
+    float: left;
+}
+
+.themeContainer {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+input,
+.form-select {
+    outline: none;
+}
+
+ul::-webkit-scrollbar {
+    width: 7px;
+    border-radius: 10px;
+}
+
+ul::-webkit-scrollbar-track {
+    background: rgba(26, 213, 151, 0.368627451);
+    border-radius: 10px;
+}
+
+ul::-webkit-scrollbar-thumb {
+    background: #1AD598;
+    border-radius: 10px;
+}
+
+ul::-webkit-scrollbar-thumb:hover {
+    background: #0fa372;
+}
+
+.headerWrapper {
+    width: 100%;
+    float: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #E6E1E5;
+    height: 68px;
+}
+
+.headerDashboardWrapper {
+    width: 100%;
+    float: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #E6E1E5;
+    height: 77px;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.closeButton, .backButton {
+    float: left;
+    border-right: 1px solid #E6E1E5;
+    display: flex;
+    height: 100%;
+}
+
+.closeButton a, .backButton a {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+.closeButton a {
+    padding: 0px 0 0 30px;
+}
+
+.logo {
+    float: left;
+    border-right: 1px solid #E6E1E5;
+    height: 100%;
+    display: flex;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 38px;
+}
+
+.headerCenter {
+    display: flex;
+    align-items: center;
+    width: 40%;
+}
+.headerCenter .modelSearch {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.headerRight {
+    padding-right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.headerRight a {
+    display: flex;
+    margin-left: 20px;
+}
+
+.navBar {
+    width: 100%;
+    float: left;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #E6E1E5;
+    padding: 0px 10px;
+}
+
+.navBar ul {
+    width: 100%;
+    float: left;
+    display: flex;
+    align-items: center;
+}
+
+.navBar ul li {
+    float: left;
+    margin: 0px 25px;
+}
+
+.navBar ul li a {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    /* or 150% */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    /* M3/sys/light/on-surface */
+    color: rgba(28, 27, 31, 0.2196078431);
+    padding-top: 10px;
+    position: relative;
+}
+
+.navBar ul li a:hover {
+    color: #007BFF;
+}
+
+.navBar ul li a.activeLink {
+    text-align: center;
+    letter-spacing: 0.1px;
+    /* material-theme/source/seed */
+    color: #007BFF;
+}
+
+.navBar ul li a.activeLink:after {
+    content: "";
+    height: 2px;
+    width: 100%;
+    border-radius: 2px 2px 0px 0px;
+    background: #007BFF;
+    position: absolute;
+    bottom: -6px;
+}
+
+#centerContent {
+    height: calc(100vh - 116px);
+}
+
+#fluidContent {
+    margin-top: 30px;
+    padding-bottom: 100px;
+}
+
+.centerWrapper {
+    width: 100%;
+    float: left;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.centerCard {
+    width: 100%;
+    max-width: 568px;
+    margin: 0 auto;
+    padding: 54px 54px 86px 54px;
+    border: 1px solid #79747E;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    z-index: 99;
+}
+
+.centerCard.fullWidth {
+    max-width: calc(100% - 90px);
+    min-height: 680px;
+}
+
+@media screen and (min-width: 1300px) and (max-width: 1800px) {
+    #centerContent {
+        height: 100%;
+        margin-top: 30px;
+        margin-bottom: 100px;
+    }
+    .centerCard.fullWidth {
+        min-height: 580px;
+    }
+}
+.centerCard > img {
+    margin-bottom: 35px;
+}
+
+.centerCard h1 {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    margin: 0px 0px 2px 0px;
+}
+
+.centerCard h1 > img {
+    margin-right: 15px;
+}
+
+.centerCard > p {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1px;
+    color: #79747E;
+    margin: 0;
+}
+
+.centerCard > span, .dateCard > span {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+    color: #000000;
+    width: 100%;
+    float: left;
+    margin-top: 22px;
+}
+
+.formButton {
+    width: 100%;
+    float: left;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.textLeft {
+    width: 100%;
+    text-align: left !important;
+}
+
+.centerCard > a, .formButton > button {
+    background: #007BFF;
+    border-radius: 100px;
+    margin: 0 auto;
+    padding: 0px 24px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 40px;
+    color: white;
+    margin-top: 46px;
+    transition: background 0.3s ease-in-out;
+    height: 40px;
+}
+
+.formButton > button {
+    margin-top: 0px;
+    float: right;
+    margin: unset;
+    transition: background 0.3s ease-in-out;
+}
+
+.centerCard > a:hover, .formButton > button:hover {
+    background: #005BC0;
+}
+
+.formButton > button.cancelBtn {
+    background: white;
+    color: #1B1B1F;
+}
+
+.formButton > button.cancelBtn:hover {
+    background: white;
+    color: #005BC0;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.123);
+}
+
+.centerCard > a img, .formButton > button img {
+    margin-right: 10px;
+}
+
+.stepWrapper {
+    display: flex;
+    width: 100%;
+    max-width: 568px;
+    margin-bottom: 35px;
+}
+
+.stepWrapper ul {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stepWrapper ul li {
+    position: relative;
+}
+
+.stepWrapper ul li:after {
+    content: "";
+    position: absolute;
+    width: 45px;
+    height: 1px;
+    background: #79747E;
+    top: 12px;
+    left: 110%;
+}
+
+.stepWrapper ul li a {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1px;
+    color: #000000;
+}
+
+.stepWrapper ul li:last-child:after {
+    display: none;
+}
+
+.stepWrapper ul li a.activeStep span {
+    background: #0073EF;
+    color: white;
+}
+
+.stepWrapper ul li a span {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 100%;
+    background: #E1E2EC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    color: #fff;
+}
+
+.cardTitle {
+    width: 100%;
+    float: left;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+
+.cardTitle > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    background: #007BFF;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 25px;
+    border-radius: 100%;
+    margin-right: 10px;
+}
+
+.cardTitle > span.passive {
+    background: #919094;
+}
+
+.centerCard.formV {
+    padding: 30px;
+}
+
+form {
+    width: 100%;
+}
+
+.formBox {
+    width: 100%;
+    float: left;
+    padding: 50px 10% 40px 10%;
+}
+
+.formBoxV2 {
+    width: 100%;
+    max-width: 454px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.formBoxV3 {
+    width: 100%;
+    float: left;
+}
+
+.formInput {
+    width: 100%;
+    float: left;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.formInput.mb20 {
+    margin-bottom: 20px;
+}
+
+.formInput label {
+    position: absolute;
+    top: -8px;
+    background: white;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.4px;
+    color: #000000;
+    left: 10px;
+    padding: 0px 7px;
+}
+
+.formInput input, .formInput textarea, .formInput select {
+    border: 1px solid #79747E;
+    border-radius: 4px;
+    width: 100%;
+    float: left;
+    padding: 10px;
+    height: 56px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    color: #1C1B1F;
+    -webkit-appearance: none;
+}
+
+.formInput textarea {
+    height: 150px;
+}
+
+.formInput select:focus, .formInput select:active, .formInput input:focus, .formInput input:active, .formInput textarea:focus, .formInput textarea:active {
+    border: 2px solid #000;
+    color: #1C1B1F;
+}
+
+.formInput input::-moz-placeholder, .formInput select::-moz-placeholder, .formInput input::-moz-placeholder {
+    color: #1C1B1F;
+}
+
+.formInput input:-ms-input-placeholder, .formInput select:-ms-input-placeholder, .formInput input:-ms-input-placeholder {
+    color: #1C1B1F;
+}
+
+.formInput input::placeholder, .formInput select::placeholder, .formInput input::placeholder {
+    color: #1C1B1F;
+}
+
+.formInput span {
+    padding: 5px 5px 5px 10px;
+    width: 100%;
+    float: left;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.4px;
+    color: #000000;
+}
+
+.tagsArea {
+    width: 100%;
+    float: left;
+    display: flex;
+    align-items: center;
+}
+
+.tagsArea a {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #1C1B1F;
+    border: 1px solid #79747E;
+    border-radius: 8px;
+    margin-right: 10px;
+    padding: 5px 10px;
+}
+
+.tagsArea a img {
+    margin-right: 5px;
+}
+
+.formInput.mb10 {
+    margin-bottom: 10px;
+}
+
+.howCreate {
+    position: absolute;
+    right: 20px;
+    border: 1px solid #79747E;
+    border-radius: 8px;
+    padding: 6px 16px;
+    margin-top: -5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.howCreate:hover {
+    background: #cecece;
+    border-color: #cecece;
+}
+
+.howCreate a {
+    font-weight: 500;
+    font-size: 14px;
+    /* identical to box height, or 143% */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    /* M3/sys/light/on-surface-variant */
+    color: #49454F;
+}
+
+.howCreate a img {
+    margin-right: 10px;
+}
+
+.radioCheck {
+    display: flex;
+    width: 100%;
+    float: left;
+    align-items: center;
+    margin-top: 46px;
+    margin-bottom: 70px;
+}
+
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 28px;
+    /* identical to box height, or 127% */
+    display: flex;
+    align-items: center;
+    /* M3/black */
+    color: #000000;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #000000;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+    top: 7px;
+    left: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+    display: none !important;
+}
+
+.p0 {
+    padding: 0px !important;
+}
+
+.loginTestWrapper {
+    width: 100%;
+    float: left;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.loginTest {
+    background: rgba(73, 69, 79, 0.08);
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #49454F;
+    padding: 6px 16px;
+    float: left;
+    font-weight: 500;
+    border: 1px solid #79747E;
+    transition: background 0.3s ease-in-out;
+}
+
+.loginTest:hover {
+    color: #49454F;
+    background: #cecece;
+    border-color: #cecece;
+}
+
+.loginTestWrapper p, .testDesc {
+    margin-top: 35px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.25px;
+    color: #000000;
+    max-width: 70%;
+}
+
+.testDesc {
+    max-width: 90%;
+    text-align: center;
+    color: #000000;
+    margin: 0 auto;
+    margin-bottom: 32px;
+    float: none;
+}
+
+.formBg {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px 35px 30px;
+    background: #F2F0F4;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    position: relative;
+    margin-bottom: 200px;
+}
+
+.formBox h3, .formBoxV2 h3 {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    margin: 0px 0px 20px 0px;
+}
+
+.positionCorner {
+    position: absolute;
+    left: -10px;
+    top: -10px;
+}
+
+.addfile {
+    position: absolute;
+    right: 16px;
+    top: 18px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    /* M3/sys/light/primary */
+    color: #6750A4;
+    background: no-repeat;
+}
+
+.formInput.inputModelV2 select, .formInput.inputModelV2 input, .formInput.inputModelV2 textarea {
+    width: 100%;
+    border: 0px;
+    border-bottom: 2px solid #8991A5;
+    height: 56px;
+    padding: 15px 0px 0px 16px;
+    border-radius: 0;
+    font-weight: 400;
+    font-size: 16px;
+    border-radius: 4px 4px 0px 0px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.5px;
+    color: #49454F;
+    line-height: 100%;
+}
+
+.formInput.inputModelV2 select, .formInput.modelSearch input {
+    background-image: url("/images/search.svg");
+    background-repeat: no-repeat;
+    background-position: 5% 50%;
+    background-size: auto;
+}
+
+.formInput.modelSearchHeader input {
+    background-image: url("/images/search.svg");
+    background-repeat: no-repeat;
+    background-position: 3% 50%;
+    background-size: auto;
+}
+
+.formInput.inputModelV2 select, .formInput.inputModelV2 label.pl52, .formInput.modelSearch input {
+    padding-left: 0;
+    left: 4px;
+    outline: none;
+    text-indent: 52px;
+}
+
+.formInput.modelSearch input {
+    border: 1px solid #919094;
+    border-radius: 4px 4px;
+}
+
+.formInput.formInput.modelSearchHeader input {
+    border: 1px solid rgb(196, 198, 208);
+    border-radius: 4px 4px;
+}
+
+.formInput.inputModelV2 label {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.5px;
+    color: #8991A5;
+    top: 6px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0);
+}
+
+.addStep {
+    position: absolute;
+    bottom: -100px;
+    left: calc(50% - 67px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 0;
+}
+
+.addStep.connectStep {
+    bottom: -106px;
+}
+
+.connectStepName span {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #FFFFFF;
+    bottom: 63px;
+    position: absolute;
+    left: 63px;
+}
+
+.addStepTop .connectStepName span {
+    bottom: 61px;
+    left: 23px;
+}
+
+.addStepTop .connectStepName span.stepTop {
+    top: -33px;
+    left: 23px;
+}
+
+.addStepTop {
+    position: absolute;
+    top: -86px;
+    left: calc(50% - 27.5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 0;
+}
+
+.stopTopMargin {
+    margin-top: 100px;
+}
+
+.addStepBtn {
+    background: #8991A5;
+    /* M3/Elevation Light/1 */
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    border-radius: 100px;
+    padding: 10px 24px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #FFFFFF;
+    margin-top: 20px;
+}
+
+.addStepBtn > img {
+    margin-right: 10px;
+}
+
+.addStepBtn:hover {
+    background: #616673;
+}
+
+.inputBg {
+    float: none;
+    max-width: 247px;
+    margin: 0 auto;
+}
+
+.inputBg input, .inputBg select {
+    background: #F2F0F4;
+    border-radius: 4px 4px 0px 0px;
+}
+
+.closeForm {
+    position: absolute;
+    right: 30px;
+    top: 25px;
+    cursor: pointer;
+}
+
+.roadMapContent {
+    width: 100%;
+    float: left;
+    display: flex;
+    justify-content: space-around;
+}
+
+.roadMapContent .formBoxV2 {
+    margin: unset;
+    margin-top: 100px;
+}
+
+.roadMap {
+    margin-top: 100px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.roadMap .addStepBtn {
+    margin-top: 0px;
+}
+
+.roadMap ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.roadMap ul li {
+    background: #F2F0F4;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    margin-bottom: 66px;
+    padding: 20px 54px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.roadMap ul li:last-child {
+    margin-bottom: 52px;
+}
+
+.whichStep {
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    border-radius: 100%;
+    margin-right: 10px;
+    background: #919094;
+}
+
+.roadMap ul li > a {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    align-items: center;
+    letter-spacing: 0.1px;
+    color: #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.roadMap ul li:after {
+    content: "";
+    background: url("/images/ext.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 48px;
+    height: 121px;
+    display: block;
+    position: absolute;
+    z-index: 999;
+    top: calc(100% - 25px);
+    left: calc(50% - 24px);
+}
+
+.roadMap ul li:last-child:after {
+    background: url("/images/connect.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    top: calc(100% - 30px);
+    height: 70px;
+    width: 55px;
+    left: calc(50% - 27.5px);
+}
+
+.roadMap ul li > a span {
+    font-weight: 500;
+}
+
+.listButton {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.listButton > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.5px;
+    color: #1B1B1F;
+    margin: 0px 20px;
+}
+
+.listButton > a:hover img {
+    filter: brightness(0) saturate(100%) invert(40%) sepia(97%) saturate(4532%) hue-rotate(200deg) brightness(103%) contrast(106%);
+}
+
+.listButton > a:hover {
+    color: #007BFF;
+}
+
+.alignCenter {
+    text-align: center;
+}
+
+.centerCard h1.successDesc {
+    display: block;
+    text-align: center;
+}
+
+.successLink {
+    width: 100%;
+    float: left;
+    margin-top: 45px;
+    display: flex;
+    justify-content: center;
+}
+
+.successLink a {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1px;
+    color: #6750A4;
+    margin-left: 6px;
+}
+
+#centerContent.bgBlock {
+    margin: 0px;
+}
+
+#centerContent.bgBlock .centerWrapper {
+    height: 100vh;
+    margin-top: -116px;
+}
+
+#centerContent.bgBlock::before {
+    content: "";
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.6901960784);
+    z-index: 0;
+}
+
+.dateCard {
+    width: 100%;
+    max-width: 818px;
+    margin: 0 auto;
+    padding: 24px 24px 26px 24px;
+    border: 1px solid #79747E;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    z-index: 99;
+    margin-top: 75px;
+}
+
+.calendarDesc {
+    width: 100%;
+    float: left;
+    margin-bottom: 47px;
+    padding-right: 13%;
+}
+
+.calendarDesc h2 {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1px;
+    color: #000000;
+    margin: 0px 0px 16px 0px;
+}
+
+.calendarDesc p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    /* or 150% */
+    letter-spacing: 0.5px;
+    color: #000000;
+    margin: 0;
+}
+
+.multipleCheck {
+    width: 100%;
+    float: left;
+    display: flex;
+    margin-top: 11px;
+    margin-bottom: 50px;
+}
+
+/* The containerX */
+.containerX {
+    position: relative;
+    margin-bottom: 0px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #49454F;
+    padding: 5.5px 16px;
+    margin-right: 15px;
+}
+
+/* Hide the browser's default checkbox */
+.containerX input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmarkX {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    z-index: -1;
+    border-radius: 8px;
+    border: 1px solid #79747E;
+}
+
+/* On mouse-over, add a grey background color */
+.containerX:hover input ~ .checkmarkX {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.containerX input:checked ~ .checkmarkX {
+    background-color: #919094;
+    border-color: #919094;
+}
+
+
+/* Create the checkmarkX/indicator (hidden when not checked) */
+.checkmarkX:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmarkX when checked */
+.containerX input:checked ~ .checkmarkX:after {
+    display: block;
+}
+
+/* Style the checkmarkX/indicator */
+.containerX .checkmarkX:after {
+    left: 11px;
+    top: 6px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkedX .containerX {
+    color: white;
+    padding-left: 30px;
+}
+
+.dateInputArea {
+    width: 100%;
+    float: left;
+    margin-top: 37px;
+    margin-bottom: 34px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dateInputArea .formInput {
+    width: calc(33.333% - 16px);
+    float: left;
+    position: relative;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.checkTitle {
+    width: 100%;
+    float: left;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #000000;
+}
+
+#dateInput {
+    text-indent: 18px;
+}
+
+input[type="date"]{
+    background-image: url("/images/calendar.svg");
+    background-repeat: no-repeat;
+    background-position: 10% 50%;
+    background-size: auto;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+::-webkit-calendar-picker-indicator {
+    position: absolute;
+    left: 14px;
+}
+
+.containerBox {
+    display: block;
+    position: relative;
+    margin-bottom: 0px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #000000;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 100%;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 138px;
+    flex-direction: column;
+}
+
+.containerBox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmarkBox {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    height: 25px;
+    width: 25px;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0);
+}
+
+.containerBox:hover input ~ .checkmarkBox {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.containerBox input:checked ~ .checkmarkBox {
+    background-color: rgba(255, 255, 255, 0);
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.checkmarkBox:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.containerBox input:checked ~ .checkmarkBox:after {
+    display: block;
+}
+
+.containerBox .checkmarkBox:after {
+    left: 8px;
+    top: 3px;
+    width: 7px;
+    height: 14px;
+    border: solid #007bff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.deviceSelect {
+    width: 100%;
+    display: flex;
+    float: left;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.deviceSelect ul {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0px 0px;
+}
+
+.deviceSelect ul li {
+    width: 107px;
+    margin-right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid #CAC4D0;
+    border-radius: 0px;
+    padding: 0px;
+}
+
+/*
+.deviceSelect ul li:last-child{
+    border: 1px solid #CAC4D0;
+} */
+.deviceSelect ul li:last-child {
+    margin-right: 0px;
+}
+
+.deviceSelect ul li .shape {
+    font-size: 36px;
+    color: White;
+    margin-bottom: 20px;
+}
+
+.deviceSelect ul li img {
+    -o-object-fit: scale-down;
+    object-fit: scale-down;
+    margin-top: 10px;
+}
+
+.mt37 {
+    margin-top: 37px;
+}
+
+.deviceSelect .checkedBox {
+    border: 1px solid #007BFF;
+}
+
+/*toggle switch*/
+.toggleSwitch {
+    width: 100%;
+    float: left;
+    display: flex;
+    align-items: center;
+    margin-top: 80px;
+    margin-bottom: 100px;
+}
+
+.toggleSwitch input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+.toggleSwitch label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 52px;
+    height: 32px;
+    background: #28231F;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+}
+
+.toggleSwitch > span {
+    /* identical to box height */
+    /* Velux Dark */
+    margin-left: 16px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+    letter-spacing: 0.15px;
+    /* M3/ref/neutral/neutral0 */
+    color: #000000;
+    margin-right: 55px;
+}
+
+.toggleSwitch label:after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border-radius: 90px;
+    transition: all 0.4s ease-in-out;
+}
+
+.toggleSwitch input:checked + label {
+    background: #919094;
+}
+
+.toggleSwitch input:checked + label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+.toggleSwitch label:active:after {
+    width: 130px;
+}
+
+/*toggle switch*/
+.noBr {
+    border: none !important;
+}
+
+.mb0 {
+    margin-bottom: 0px !important;
+}
+
+.tableTop {
+    width: 100%;
+    float: left;
+    display: flex;
+    align-items: center;
+}
+
+.formInput.modelSearch {
+    max-width: 370px;
+}
+
+.tableWrapper {
+    width: 100%;
+    float: left;
+    margin-top: 45px;
+    background: #FFFFFF;
+    border: 1px solid #CAC4D0;
+    border-radius: 12px;
+}
+
+.noPad {
+    padding: 0px !important;
+}
+
+.noMar {
+    margin: 0px !important;
+}
+
+.tableWrapper table th {
+    font-size: 18px;
+    line-height: 24px;
+    color: #000000;
+    font-weight: 400 !important;
+}
+
+.tableWrapper table td {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    color: #000000;
+}
+
+.tableWrapper table td a {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    align-items: center;
+    letter-spacing: 0.1px;
+    color: #007BFF;
+}
+
+.tableWrapper table.dataTable thead th, .tableWrapper table.dataTable thead td, .tableWrapper table.dataTable th, .tableWrapper table.dataTable td {
+    padding: 20px 10px 20px 50px;
+}
+
+.tableWrapper table.dataTable thead tr {
+    border-radius: 10px;
+}
+
+.tableWrapper .toggleSwitch label {
+    width: 32.5px;
+    height: 20px;
+}
+
+.tableWrapper .toggleSwitch label:after {
+    width: 15px;
+    height: 15px;
+    top: 2.5px;
+}
+
+table.dataTable.display tbody tr.odd {
+    background: #fff;
+    box-shadow: unset !important;
+    border-radius: 10px;
+}
+
+table.dataTable.display tbody tr.even {
+    background: #fff;
+    box-shadow: unset !important;
+    border-radius: 10px;
+}
+
+table.dataTable.stripe > tbody > tr.odd > *, table.dataTable.display > tbody > tr.odd > * {
+    box-shadow: unset !important;
+}
+
+table.dataTable.no-footer {
+    border-bottom: 0px !important;
+}
+
+table.dataTable.row-border tbody tr:first-child th, table.dataTable.row-border tbody tr:first-child td, table.dataTable.display tbody tr:first-child th, table.dataTable.display tbody tr:first-child td {
+    border-radius: 10px !important;
+}
+
+table.dataTable.row-border tbody tr:last-child th, table.dataTable.row-border tbody tr:last-child td, table.dataTable.display tbody tr:last-child th, table.dataTable.display tbody tr:last-child td {
+    border-radius: 0px 0px 10px 10px !important;
+}
+
+.passiveSwitch {
+    opacity: 0.4;
+}
+
+.borderNone {
+    border: none !important;
+}
+
+.button {
+    background: #007BFF;
+    border-radius: 100px;
+    padding: 10px 24px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: white;
+    transition: background 0.3s ease-in-out;
+    cursor: pointer;
+}
+.button:hover {
+    color: #fff;
+}
+
+.sideBar, .active {
+    background-color: #fff;
+    height: calc(100vh - 77px);
+}
+.sideBar .navigation .title, .active .navigation .title {
+    padding: 23px 28px;
+    margin: 35px 0 20px;
+    font-size: 16px;
+    background-color: rgb(239, 240, 250);
+}
+.sideBar .navigation ul li, .active .navigation ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(100% - 44px);
+    padding: 16px 22px;
+}
+.sideBar .navigation ul li a, .active .navigation ul li a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+.sideBar .navigation ul li a .icon, .active .navigation ul li a .icon {
+    display: inline-block;
+    width: 18px;
+}
+.sideBar .navigation ul li a span, .active .navigation ul li a span {
+    width: calc(100% - 38px);
+    margin-left: 20px;
+    color: rgb(8, 8, 13);
+    font-size: 16px;
+}
+
+.dashboardMain {
+    padding: 4%;
+}
+.dashboardMain .dashboardHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.dashboardMain .dashboardHead .title {
+    display: inline-block;
+    font-size: 22px;
+}
+.dashboardMain .dashboardBody .filtre {
+    display: block;
+    width: 25%;
+    max-width: 300px;
+}
+.dashboardMain .dashboardBody .testCount {
+    display: inline-block;
+    width: 100%;
+}
+.dashboardMain .dashboardBody .testCount .card {
+    width: 33%;
+    margin-right: 3%;
+    padding: 22px;
+    padding-bottom: 28px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #FFFFFF;
+    border: 1px solid #E3E2E6;
+    border-radius: 12px;
+}
+.dashboardMain .dashboardBody .testCount .card .head img {
+    height: 45px;
+}
+.dashboardMain .dashboardBody .testCount .card .head h3 {
+    display: inline-block;
+    margin-left: 18px;
+    font-size: 16px;
+    font-weight: 800;
+}
+.dashboardMain .dashboardBody .testCount .card .description {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 20px 0;
+}
+.dashboardMain .dashboardBody .testCount .card .count {
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+    color: rgb(119, 119, 122);
+}
+.dashboardMain .dashboardBody .visualization {
+    width: 100%;
+    margin: 30px 0;
+}
+.dashboardMain .dashboardBody .visualization .title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #000;
+}
+.dashboardMain .dashboardBody .visualization .subTitle {
+    color: rgb(145, 144, 148);
+}
+.dashboardMain .dashboardBody .visualization .count {
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 74px;
+    letter-spacing: 0.15px;
+    color: rgb(145, 144, 148);
+}
+.dashboardMain .dashboardBody .last4data .line {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.dashboardMain .dashboardBody .last4data .line .dateData {
+    display: inline-block;
+    width: 30%;
+    font-size: 12px;
+    color: #8E9099;
+}
+.dashboardMain .dashboardBody .last4data .line .canvasData {
+    display: inline-block;
+    width: 65%;
+}
+
+.simplePage {
+    width: 90%;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: #FFFFFF;
+    display: flex;
+}
+.simplePage .logoSample {
+    width: 50%;
+    margin: 0 auto;
+}
+.simplePage .logoSample img {
+    text-align: center;
+    width: 100%;
+}
+.simplePage #title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 0.15px;
+    color: #007BFF;
+    margin: 10px 0 18px;
+}
+.simplePage #subtitle {
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 0.15px;
+    color: #919094;
+    margin: 10px 0;
+}
+.simplePage .formInput {
+    margin: 22px 0;
+}
+.simplePage .left-6, .simplePage .right-6 {
+    width: 49%;
+    display: inline-block;
+}
+.simplePage .right-6 a {
+    float: right;
+}
+.simplePage #forgot {
+    color: #007BFF;
+    font-size: 14px;
+}
+.simplePage .formButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 24px;
+    margin: 20px 0 40px;
+    background: #007BFF;
+    border-radius: 100px;
+    color: #fff;
+}
+.simplePage .subForm {
+    color: #919094;
+    font-size: 16px;
+    text-align: center;
+}
+
+.centerX {
+    display: flex;
+    align-items: center;
+}
+
+.centerY {
+    display: flex;
+    justify-content: center;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.checkboxContainer {
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkboxContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    border: 2px rgb(255, 255, 255) solid;
+    border-radius: 50%;
+}
+.checkmark:before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    height: 22px;
+    width: 22px;
+    border: 2px rgb(0, 0, 0) solid;
+    border-radius: 50%;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkboxContainer input:checked ~ .checkmark {
+    background-color: rgb(31, 31, 31);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkboxContainer input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkboxContainer .checkmark:after {
+    left: 4px;
+    top: 1px;
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}/*# sourceMappingURL=style.css.map */
