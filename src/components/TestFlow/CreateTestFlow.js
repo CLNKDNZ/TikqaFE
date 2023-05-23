@@ -6,7 +6,7 @@ const CreateTestFlow = () => {
 
     useEffect(
         () => {
-            fromApi("GET", "v1/event", null, (res) => {
+            fromApi("GET", "event", null, (res) => {
                 console.log(res);
             })
         }, []
