@@ -1,6 +1,17 @@
-import React from "react";
-import Button from "@/components/Button";
+import React, {useEffect, useState} from "react";
+import Link from "next/link";
+import fromApi from "@/utils/fromApi";
+
+
+
 function TestTable() {
+    const [testList, setTestList] = useState([]);
+
+    useEffect(() => {
+        fromApi("GET", "test-case", null, (res) => {
+            setTestList(res.data);
+        });
+    }, [])
 
 
     return (
@@ -15,12 +26,9 @@ function TestTable() {
                             <input type="text" placeholder="Test ID, test adı ya da etiketinde ara" />
                         </div>
                         <div className="formButton">
-                                <Button
-                                    type="button"
-                                    url="/testFlow"
-                                >
-                                    <img src="/images/add.svg" alt="" /> Yeni test oluştur
-                                </Button>
+                                <Link href="/testInformation/" className="buttonBlue">
+                                        <img src="/images/add.svg" alt="" /> Yeni test oluştur
+                                </Link>
                         </div>
                     </div>
                     <div className="tableWrapper">
@@ -38,138 +46,37 @@ function TestTable() {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>TP - 236</td>
-                                    <td>Başarılı Login</td>
-                                    <td>
-                                        <div className="toggleSwitch noMar">
-                                            <input type="checkbox" id="table-id1" />
-                                            <label htmlFor="table-id1"></label>
-                                        </div>
-                                    </td>
-                                    <td>22.10.2019</td>
-                                    <td>
-                                        <strong>Berkan</strong>
-                                    </td>
-                                    <td>
-                                        <a href="src/components#">Rapor</a>
-                                    </td>
-                                    <td>
-                                        <button>
-                                            <img src="/images/select.svg" alt="" />
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>TP - 236</td>
-                                    <td>Başarılı Login</td>
-                                    <td>
-                                        <div className="toggleSwitch passiveSwitch noMar">
-                                            <input type="checkbox" id="table-id2" />
-                                            <label htmlFor="table-id2"></label>
-                                        </div>
-                                    </td>
-                                    <td>22.10.2019</td>
-                                    <td>
-                                        <strong>Berkan</strong>
-                                    </td>
-                                    <td>
-                                        <a href="src/components#">Rapor</a>
-                                    </td>
-                                    <td>
-                                        <button>
-                                            <img src="/images/select.svg" alt="" />
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>TP - 236</td>
-                                    <td>Başarılı Login</td>
-                                    <td>
-                                        <div className="toggleSwitch passiveSwitch noMar">
-                                            <input type="checkbox" id="table-id3" />
-                                            <label htmlFor="table-id3"></label>
-                                        </div>
-                                    </td>
-                                    <td>22.10.2019</td>
-                                    <td>
-                                        <strong>Berkan</strong>
-                                    </td>
-                                    <td>
-                                        <a href="src/components#">Rapor</a>
-                                    </td>
-                                    <td>
-                                        <button>
-                                            <img src="/images/select.svg" alt="" />
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>TP - 236</td>
-                                    <td>Başarılı Login</td>
-                                    <td>
-                                        <div className="toggleSwitch noMar">
-                                            <input type="checkbox" id="table-id4" />
-                                            <label htmlFor="table-id4"></label>
-                                        </div>
-                                    </td>
-                                    <td>22.10.2019</td>
-                                    <td>
-                                        <strong>Berkan</strong>
-                                    </td>
-                                    <td>
-                                        <a href="src/components#">Rapor</a>
-                                    </td>
-                                    <td>
-                                        <button>
-                                            <img src="/images/select.svg" alt="" />
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>TP - 236</td>
-                                    <td>Başarılı Login</td>
-                                    <td>
-                                        <div className="toggleSwitch noMar">
-                                            <input type="checkbox" id="table-id5" />
-                                            <label htmlFor="table-id5"></label>
-                                        </div>
-                                    </td>
-                                    <td>22.10.2019</td>
-                                    <td>
-                                        <strong>Berkan</strong>
-                                    </td>
-                                    <td>
-                                        <a href="src/components#">Rapor</a>
-                                    </td>
-                                    <td>
-                                        <button>
-                                            <img src="/images/select.svg" alt="" />
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>TP - 236</td>
-                                    <td>Başarılı Login</td>
-                                    <td>
-                                        <div className="toggleSwitch noMar">
-                                            <input type="checkbox" id="table-id6" />
-                                            <label htmlFor="table-id6"></label>
-                                        </div>
-                                    </td>
-                                    <td>22.10.2019</td>
-                                    <td>
-                                        <strong>Berkan</strong>
-                                    </td>
-                                    <td>
-                                        <a href="src/components#">Rapor</a>
-                                    </td>
-                                    <td>
-                                        <button>
-                                            <img src="/images/select.svg" alt="" />
-                                        </button>
-                                    </td>
-                                </tr>
+                                {testList.map((test, index) => (
+                                    <tr key={index}>
+                                        <td>{test.id}</td>
+                                        <td>{test.name}</td>
+                                        <td>
+                                            <div className="toggleSwitch noMar">
+                                                <input
+                                                    type="checkbox"
+                                                    id="table-id1"
+                                                    checked={test.status ? true : false}
+                                                />
+                                                <label htmlFor="table-id1"></label>
+                                            </div>
+                                        </td>
+                                        <td>22.10.2019</td>
+                                        <td>
+                                            <strong>Berkan</strong>
+                                        </td>
+                                        <td>
+                                            <a href="">Rapor</a>
+                                        </td>
+                                        <td>
+                                            <button className="buttonTransparent">
+                                                <img src="/images/select.svg" alt="" />
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    )
+                                )
+                                }
+
                                 </tbody>
                         </table>
                         </div>

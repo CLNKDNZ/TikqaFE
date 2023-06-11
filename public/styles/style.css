@@ -311,32 +311,34 @@ ul::-webkit-scrollbar-thumb:hover {
     text-align: left !important;
 }
 
-.centerCard > a, .formButton > button {
+.centerCard > a, .formButton > button, .buttonBlue {
     background: #007BFF;
     border-radius: 100px;
-    margin: 0 auto;
+    margin: 44px auto 0;
     padding: 0px 24px;
     font-weight: 500;
     font-size: 14px;
     line-height: 40px;
     color: white;
-    margin-top: 46px;
     transition: background 0.3s ease-in-out;
     height: 40px;
 }
 
-.formButton > button {
-    margin-top: 0px;
+.formButton > button, .buttonBlue {
     float: right;
     margin: unset;
     transition: background 0.3s ease-in-out;
+    display: inline-block;
+    align-items: flex-start;
+    text-align: center;
 }
 
-.centerCard > a:hover, .formButton > button:hover {
+.centerCard > a:hover, .formButton > button:hover, .buttonBlue:hover {
     background: #005BC0;
+    color: white !important;
 }
 
-.formButton > button.cancelBtn {
+.formButton > button.cancelBtn , .buttonBlue.cancelBtn {
     background: white;
     color: #1B1B1F;
 }
@@ -347,7 +349,7 @@ ul::-webkit-scrollbar-thumb:hover {
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.123);
 }
 
-.centerCard > a img, .formButton > button img {
+.centerCard > a img, .formButton > button img, .buttonBlue img {
     margin-right: 10px;
 }
 
@@ -544,6 +546,7 @@ form {
     float: left;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .tagsArea a {
@@ -558,7 +561,9 @@ form {
     border: 1px solid #79747E;
     border-radius: 8px;
     margin-right: 10px;
+    margin-bottom: 5px;
     padding: 5px 10px;
+    cursor: pointer;
 }
 
 .tagsArea a img {
@@ -1451,7 +1456,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     text-indent: -9999px;
     width: 52px;
     height: 32px;
-    background: #28231F;
+    background: #49454F;
+    opacity: 0.12;
     display: block;
     border-radius: 100px;
     position: relative;
@@ -1485,6 +1491,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .toggleSwitch input:checked + label {
     background: #919094;
+    opacity: 1;
 }
 
 .toggleSwitch input:checked + label:after {
@@ -1900,3 +1907,13 @@ table.dataTable.row-border tbody tr:last-child th, table.dataTable.row-border tb
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
 }/*# sourceMappingURL=style.css.map */
+
+.w-110 {
+    width: 110%;
+}
+.buttonTransparent{
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

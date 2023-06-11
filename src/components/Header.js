@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 const Header = () => {
     return (
         <section id="header">
@@ -7,9 +8,9 @@ const Header = () => {
                     <div className="headerWrapper">
                         <div className="headerLeft">
                             <div className="backButton">
-                                <a href="#">
+                                <Link href="/">
                                     <img src="/images/back.svg" alt="" />
-                                </a>
+                                </Link>
                             </div>
                             <div className="logo">
                                 <a href="#">

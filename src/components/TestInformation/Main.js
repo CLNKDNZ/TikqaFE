@@ -1,5 +1,69 @@
 import Step from "@/components/Step";
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import {useEffect, useState} from "react";
+import {useRouter} from "next/router";
+import {getData,putData} from "@/utils/localData";
+import {useSelector,useDispatch} from "react-redux";
+import {updateStateData} from "@/store/stepData";
+
+
 const Main = () => {
+
+    const dispatch = useDispatch();
+
+    const [data, setData] = useState({
+        name: '',
+        acceptanceCriteria: '',
+        tagList: []
+    });
+
+
+    const validationSchema = Yup.object({
+        name: Yup.string().min(3, 'En az 3 karakter olmalıdır').max(300, 'En fazla 300 karakter olmalıdır').required('Bu alan zorunludur'),
+    });
+    const router = useRouter();
+    const { handleSubmit, handleChange, values, errors } = useFormik({
+        initialValues: {
+            name: data.name,
+            acceptanceCriteria: data.acceptanceCriteria,
+        },
+        validationSchema,
+        onSubmit() {
+            dispatch(updateStateData(data));
+            router.push('/testFlow');
+        }
+    });
+
+
+    useEffect(() => {
+            setData({
+                ...data,
+                name: values.name,
+                acceptanceCriteria: values.acceptanceCriteria
+            })
+        },[values])
+
+    useEffect(() => {
+        if (getData("testInformation")){
+            setData(getData("testInformation"))
+
+        }
+    },[])
+
+    const handleTag = (e) => {
+        if (e.key === 'Enter') {
+            if (data.tagList.length < 5) {
+                setData({
+                    ...data,
+                    tagList: [...data.tagList, e.target.value]
+                })
+                e.target.value = '';
+            }
+        }
+    }
+
+
     return (
         <section id="centerContent">
             <div className="centerWrapper">
@@ -7,29 +71,79 @@ const Main = () => {
                 <div className="centerCard formV">
                     <div className="cardTitle"><span>1</span> Test bilgileri</div>
                     <div className="formBox">
-                        <form action="">
+                        <form>
                             <div className="formInput">
-                                <label htmlFor="testname">Test Adı *</label>
-                                <input id="testname" type="text" placeholder="Input"/>
+                                <label htmlFor="name">Test Adı *</label>
+                                <input
+                                    name="name"
+                                    id="name"
+                                    type="text"
+                                    placeholder="Input"
+                                    onChange={handleChange}
+                                    value={values.name}
+                                />
+                                {
+                                    // errors testName and touched testName
+                                    errors.name && <span className="error">{errors.name}</span>
+                                }
                             </div>
                             <div className="formInput">
                                 <label htmlFor="criteria">Test kabul kriterleri (İsteğe bağlı)</label>
-                                <textarea name="criteria" id="criteria"></textarea>
+                                <textarea
+                                    name="acceptanceCriteria"
+                                    id="criteria"
+                                    onChange={handleChange}
+                                    value={values.acceptanceCriteria}
+                                ></textarea>
                             </div>
                             <div className="formInput mb10">
-                                <label htmlFor="testname">Etiket (İsteğe bağlı)</label>
-                                <input id="testname" type="text" placeholder="Input"/>
+                                <label htmlFor="tagList">Etiket (İsteğe bağlı)</label>
+                                <input
+                                    name="tagList"
+                                    id="tagList"
+                                    type="text"
+                                    placeholder="Input"
+                                    disabled={
+                                        data.tagList?.length >= 5
+                                    }
+                                    // set test tag array when enter pressed
+                                    onKeyDown={handleTag}
+                                />
                                     <span>Etiketlerinizi yazdıktan sonra enter’a basın</span>
                             </div>
                             <div className="tagsArea">
-                                <a href="#"> <img src="/images/delete.svg" alt=""/> test </a>
-                                <a href="#"> <img src="/images/delete.svg" alt=""/> değişken </a>
+                                {
+                                    data.tagList?.map((tag, index) => (
+                                        <a
+                                            key={index}
+                                            onClick={
+                                                (e) => {
+                                                    e.preventDefault();
+                                                    // remove tag from array
+                                                    setData(
+                                                        {
+                                                            ...data,
+                                                            tagList: data.tagList.filter((item) => item !== tag)
+                                                        }
+                                                    );
+                                                }
+                                            }
+                                        >
+                                            <img src="/images/delete.svg" alt=""/>
+                                            {tag}
+                                        </a>
+                                    ))
+                                }
+                            </div>
+                            <div className="formButton w-110 mt-3">
+                                <button
+                                    type="button"
+                                    onClick={handleSubmit}
+                                ><img src="/images/right.svg" alt=""/> Test akışı oluştur</button>
                             </div>
                         </form>
                     </div>
-                    <div className="formButton">
-                        <button type="submit"><img src="/images/right.svg" alt=""/> Test akışı oluştur</button>
-                    </div>
+
                 </div>
             </div>
         </section>

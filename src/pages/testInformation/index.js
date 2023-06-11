@@ -1,11 +1,11 @@
 import Header from "@/components/Header";
-import CreateTestFlow2 from "@/components/TestFlow/CreateTestFlow2";
+import Main from "@/components/TestInformation/Main";
 
 export default function Index() {
     return (
         <>
             <Header />
-            <CreateTestFlow2 />
+            <Main />
         </>
     );
 }
