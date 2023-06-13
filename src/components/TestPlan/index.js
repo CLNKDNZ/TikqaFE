@@ -2,11 +2,17 @@ import Step from "@/components/Step";
 import SelectArea from "@/components/TestPlan/SelectArea";
 import fromApi from "@/utils/fromApi";
 import {useEffect, useState} from "react";
+import {useRouter} from "next/router";
+import {useSelector} from "react-redux";
+import Modal from "@/components/Success/Modal";
 function TestPlan() {
+    const router = useRouter();
+    const {data} = useSelector((state) => state.stepData);
 
     const [platformList, setPlatformList] = useState([]);
     const [osList, setOsList] = useState([]);
     const [browserList, setBrowserList] = useState([]);
+    const [success, setSuccess] = useState(false);
 
     useEffect(
         () => {
@@ -36,6 +42,13 @@ function TestPlan() {
         }
     }
 
+
+    const handleSubmit = () => {
+        fromApi("POST", "test-case", data, (res) => {
+            router.push("/success");
+        })
+    }
+
     return (
         <section id="fluidContent">
             <div className="centerWrapper">
@@ -54,6 +67,7 @@ function TestPlan() {
                                 <SelectArea
                                     name="Platform seçimi"
                                     options={platformList}
+                                    dataName="platformList"
                                     selectHandle={
                                         (e) => handleSelect(e, 'platformList')
                                     }
@@ -63,6 +77,7 @@ function TestPlan() {
                                     osList.length > 0 && <SelectArea
                                         name="İşletim sistemi seçimi"
                                         options={osList}
+                                        dataName="operatingSystemList"
                                         selectHandle={
                                             (e) => handleSelect(e, 'osList')
                                         }
@@ -72,6 +87,10 @@ function TestPlan() {
                                     browserList.length > 0 && <SelectArea
                                         name="Browser seçimi"
                                         options={browserList}
+                                        dataName="browserList"
+                                        selectHandle={
+                                            (e) => handleSelect(e, 'browserList')
+                                        }
                                     />
                                 }
                                 <div className="toggleSwitch">
@@ -81,7 +100,9 @@ function TestPlan() {
                             </div>
                         </form>
                         <div className="formButton">
-                            <button type="submit"><img src="/images/right.svg" /> Kurulumu tamamla</button>
+                            <button
+                                onClick={handleSubmit}
+                                type="button"><img src="/images/right.svg" /> Kurulumu tamamla</button>
                         </div>
                     </div>
                 </div>

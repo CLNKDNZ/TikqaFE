@@ -4,9 +4,9 @@ export const stepDataSlice = createSlice({
     name: 'stepData',
     initialState: {
             data : {
-                name : "Login Test",
+                name : null,
                 type: "Browser",
-                description: "www.hangikredi.com üzerinden Üyelik Testi yapılacak ",
+                description: null,
                 isHeadless: false,
                 isGrid: false,
                 acceptanceCriteria: null,
@@ -22,12 +22,12 @@ export const stepDataSlice = createSlice({
                         linkTo: 1,
                         name: "Linke git",
                         selectorTypeValue: null,
-                        eventParamValue: "https://www.hangikredi.com/giris?uye-ol=true",
+                        eventParamValue: null,
                         selectorType: {
-                            id: null
+                            id: 1
                         },
                         testCaseEvent: {
-                            id: null,
+                            id: 1,
                             eventParam: []
                         }
                     }
@@ -52,7 +52,6 @@ export const stepDataSlice = createSlice({
             state.activeStep = action.payload
         },
         addStep: (state, action) => {
-            console.log("dd")
             state.data.testSteps.push({
                 eventOrder: state.data.testSteps.length,
                 linkFrom: state.data.testSteps.length - 1,
@@ -61,7 +60,7 @@ export const stepDataSlice = createSlice({
                 selectorTypeValue: null,
                 eventParamValue: null,
                 selectorType: {
-                    name: null
+                    id: null
                 },
                 testCaseEvent: {
                     id: null,

@@ -1,12 +1,26 @@
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { updateStateData } from "@/store/stepData";
 
-const SelectArea = ({ name, options, selectHandle }) => {
+const SelectArea = ({ name, options, selectHandle, dataName }) => {
+    const dispatch = useDispatch();
+    const { data } = useSelector((state) => state.stepData);
     const [selected, setSelected] = useState([]);
 
     selectHandle = selectHandle || (() => {});
 
     useEffect(() => {
         selectHandle(selected);
+        dispatch(
+            updateStateData({
+                [dataName]: selected.map(
+                    (item) => {
+                        return {
+                            id: item
+                        }
+                    }
+                )
+            }))
     }, [selected]);
 
     const handleSelect = (e) => {

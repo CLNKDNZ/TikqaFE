@@ -41,7 +41,7 @@ const TestFlowForm = ({activeStep, active}) => {
                                 ...formData,
                                 testCaseEvent: {
                                     ...formData.testCaseEvent,
-                                    id: e.target.value
+                                    id: parseInt(e.target.value)
                                 }
                             })
                         }
@@ -58,7 +58,7 @@ const TestFlowForm = ({activeStep, active}) => {
                                 ...formData,
                                 selectorType: {
                                     ...formData.selectorType,
-                                    id: e.target.value
+                                    id: parseInt(e.target.value)
                                 }
                             })
                         }
