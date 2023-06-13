@@ -9,7 +9,7 @@ const Modal = () => {
                     <img src="/images/check_circle.svg" alt=""/>
                         <h1 className="successDesc"><strong>“{name}”</strong> test kurulumunuz<br/>tamamlanmıştır.</h1>
                         <div className="successLink">
-                            Tüm test listesini görmek için <a href='/'>tıklayınız.</a>
+                            Tüm test listesini görmek için <a href='//'>tıklayınız.</a>
                         </div>
                 </div>
             </div>
