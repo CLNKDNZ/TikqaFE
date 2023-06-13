@@ -1,9 +1,7 @@
 import Step from "@/components/Step";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
-import {getData,putData} from "@/utils/localData";
 import {useSelector,useDispatch} from "react-redux";
 import {updateStateData} from "@/store/stepData";
 
@@ -11,12 +9,7 @@ import {updateStateData} from "@/store/stepData";
 const Main = () => {
 
     const dispatch = useDispatch();
-
-    const [data, setData] = useState({
-        name: '',
-        acceptanceCriteria: '',
-        tagList: []
-    });
+    const data = useSelector(state => state.stepData.data);
 
 
     const validationSchema = Yup.object({
@@ -30,35 +23,26 @@ const Main = () => {
         },
         validationSchema,
         onSubmit() {
-            dispatch(updateStateData(data));
+            dispatch(updateStateData(values));
             router.push('/testFlow');
         }
     });
 
 
-    useEffect(() => {
-            setData({
-                ...data,
-                name: values.name,
-                acceptanceCriteria: values.acceptanceCriteria
-            })
-        },[values])
 
-    useEffect(() => {
-        if (getData("testInformation")){
-            setData(getData("testInformation"))
-
-        }
-    },[])
 
     const handleTag = (e) => {
         if (e.key === 'Enter') {
             if (data.tagList.length < 5) {
-                setData({
-                    ...data,
-                    tagList: [...data.tagList, e.target.value]
-                })
-                e.target.value = '';
+                if (e.target.value.length > 0) {
+                    // add tag to array
+                    dispatch(updateStateData(
+                        {
+                            tagList: [...data.tagList, {name: e.target.value}]
+                        }
+                    ));
+                    e.target.value = '';
+                }
             }
         }
     }
@@ -120,17 +104,16 @@ const Main = () => {
                                                 (e) => {
                                                     e.preventDefault();
                                                     // remove tag from array
-                                                    setData(
+                                                    dispatch(updateStateData(
                                                         {
-                                                            ...data,
-                                                            tagList: data.tagList.filter((item) => item !== tag)
+                                                            tagList: data.tagList.filter((item) => item.name !== tag.name)
                                                         }
-                                                    );
+                                                    ));
                                                 }
                                             }
                                         >
                                             <img src="/images/delete.svg" alt=""/>
-                                            {tag}
+                                            {tag.name}
                                         </a>
                                     ))
                                 }

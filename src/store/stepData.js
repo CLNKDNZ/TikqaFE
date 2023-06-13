@@ -20,48 +20,20 @@ export const stepDataSlice = createSlice({
                         eventOrder: 0,
                         linkFrom: 0,
                         linkTo: 1,
-                        name: null,
+                        name: "Linke git",
                         selectorTypeValue: null,
                         eventParamValue: "https://www.hangikredi.com/giris?uye-ol=true",
-                        createdAt: "2022-01-13T17:09:42.411",
-                        createdBy: "Deniz Celenk",
-                        lastUpdatedAt: null,
-                        lastUpdatedBy: null,
                         selectorType: {
-                            name: "XPATH"
+                            id: null
                         },
                         testCaseEvent: {
-                            id: 3,
-                            type: "ACTION",
-                            name: "GO_TO_URL",
-                            description: "Can go any url on your browser. You have go pass right parameters.",
-                            eventParam: []
-                        }
-                    },
-                    {
-                        eventOrder: 1,
-                        linkFrom: 0,
-                        linkTo: 2,
-                        name: null,
-                        selectorTypeValue: "//*[@id='name-register']",
-                        eventParamValue: "Deniz",
-                        createdAt: "2022-01-13T17:09:42.411",
-                        createdBy: "Deniz Celenk",
-                        lastUpdatedAt: null,
-                        lastUpdatedBy: null,
-                        selectorType: {
-                            name: "XPATH"
-                        },
-                        testCaseEvent: {
-                            id: 2,
-                            type: "ACTION",
-                            name: "SEND_KEY",
-                            description: "Can write anything inner all input element. You have go pass right parameters.",
+                            id: null,
                             eventParam: []
                         }
                     }
                 ]
-            }
+            },
+            activeStep: 0
             },
     reducers: {
         updateStateData: (state, action) => {
@@ -69,10 +41,39 @@ export const stepDataSlice = createSlice({
                 ...state.data,
                 ...action.payload
             }
+        },
+        updateStepData: (state, action) => {
+            state.data.testSteps[state.activeStep] = {
+                ...state.data.testSteps[state.activeStep],
+                ...action.payload
+            }
+        },
+        updateActiveStep: (state, action) => {
+            state.activeStep = action.payload
+        },
+        addStep: (state, action) => {
+            console.log("dd")
+            state.data.testSteps.push({
+                eventOrder: state.data.testSteps.length,
+                linkFrom: state.data.testSteps.length - 1,
+                linkTo: state.data.testSteps.length + 1,
+                name: "Yeni Adım",
+                selectorTypeValue: null,
+                eventParamValue: null,
+                selectorType: {
+                    name: null
+                },
+                testCaseEvent: {
+                    id: null,
+                    eventParam: []
+                },
+                ...action.payload
+            })
+            state.activeStep = state.data.testSteps.length - 1;
         }
     }
 })
 
-export const {updateStateData} = stepDataSlice.actions;
+export const {updateStateData, updateStepData, updateActiveStep, addStep} = stepDataSlice.actions;
 
 export default stepDataSlice.reducer;

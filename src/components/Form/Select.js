@@ -1,5 +1,5 @@
 import {useState} from "react";
-export const Select = ({ name, id, options, onChange}) => {
+export const Select = ({ name, id, options, onChange, selected}) => {
     return (
         <div className="formInput inputModelV2 mb20">
             <label className="pl52" htmlFor="action">{name}</label>
@@ -7,15 +7,16 @@ export const Select = ({ name, id, options, onChange}) => {
                 name={name}
                 id={id}
                 onChange={onChange}
-                defaultValue={options[0].value}
+                defaultValue={selected || options[0]?.id}
             >
                 {options.map((option,key) => (
                     <option
                         key={key}
-                        value={option.value}
+                        value={option.id}
                     >
-                        {option.label}
+                        {option.name || option.eventName}
                     </option>
+                    //TODO: Fix this
                 ))}
             </select>
         </div>

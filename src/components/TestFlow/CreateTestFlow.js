@@ -1,16 +1,29 @@
 import Step from "@/components/Step";
 import { Select, Text, File} from "@/components/Form/Index";
 import fromApi from "@/utils/fromApi";
-import {useEffect} from "react";
-const CreateTestFlow = () => {
+import {useState,useEffect} from "react";
+import TestFlowForm from "@/components/TestFlow/TestFlowForm";
+import {useDispatch, useSelector} from "react-redux";
+import RoadMap from "@/components/TestFlow/RoadMap";
+import {addStep} from "@/store/stepData";
+import {useRouter} from "next/router";
 
-    useEffect(
-        () => {
-            fromApi("GET", "event", null, (res) => {
-                console.log(res);
-            })
-        }, []
-    )
+const CreateTestFlow = () => {
+    const dispatch = useDispatch();
+    const {activeStep,data} = useSelector(state => state.stepData);
+    const router = useRouter()
+
+    const [event, setEvent] = useState([]);
+    const [locator, setLocator] = useState([]);
+
+    useEffect(() => {
+        fromApi("GET", "event", null, (res) => {
+            setEvent(res.data);
+        });
+        fromApi("GET", "selector", null, (res) => {
+            setLocator(res.data);
+        });
+    }, []);
 
     return (
         <section id="fluidContent">
@@ -21,82 +34,61 @@ const CreateTestFlow = () => {
                     <div className="loginTestWrapper">
                         <a href="#" className="loginTest">Amazon login testi</a>
                     </div>
-                    <div className="formBoxV2">
-                        <p className="testDesc">Testinizin birinci adımını oluşturduktan sonra yeni adımlar için adım
-                            ekle butonu ile test kurulumunu yapabilirsiniz.</p>
-                        <div className="formBg">
-                            <div className="cardTitle positionCorner"><span>1</span></div>
-                            <form action="">
-                                <h3>Birinci adım</h3>
-                                <Select
-                                    name="action"
-                                    id="action"
-                                    onChange={
-                                        (e) => {
-                                            console.log(e.target.value);
-                                        }
-                                    }
-                                    options={[
-                                    {value: "1", label: "Aksiyon 1"},
-                                    {value: "2", label: "Aksiyon 2"},
-                                    {value: "3", label: "Aksiyon 3"},
-                                    {value: "4", label: "Aksiyon 4"},
-                                    {value: "5", label: "Aksiyon 5"},
-                                ]} />
-                                <Select
-                                    name="Locator seçimi"
-                                    id="locator"
-                                    onChange={
-                                        (e) => {
-                                            console.log(e.target.value);
-                                        }
-                                    }
-                                    options={[
-                                    {value: "1", label: "Aksiyon 1"},
-                                    {value: "2", label: "Aksiyon 2"},
-                                    {value: "3", label: "Aksiyon 3"},
-                                    {value: "4", label: "Aksiyon 4"},
-                                    {value: "5", label: "Aksiyon 5"},
-                                ]} />
+                    <div className="roadMapContent">
+                        {
+                            data.testSteps.length > 1 ? <RoadMap /> : null
+                        }
+                        <div className="formBoxV2">
+                            <div className="formBg">
 
-                                <Text
-                                    name="Locator değeri"
-                                    id="locatorVal"
-                                    placeholder="UserName"
-                                    desc="İlgili alanın adını yazın" />
-                                <Text
-                                    name="Locator değerinin önyüzdeki adı (isteğe bağlı)"
-                                    id="locatorVal2"
-                                    placeholder="Kullanıcı adı"
-                                    desc="İlgili alanın adını yazın" />
 
-                                <File
-                                    label="Input Ekle"
-                                    id="addInput"
-                                    onChange={
-                                        (e) => {
-                                            console.log(e.target.value);
+
+                                {/*<div className="addStepTop">*/}
+                                {/*    <div className="connectStepName"><img src="/images/connectMulti.png" alt=""/>*/}
+                                {/*        <span className="stepTop">1</span> <span>1</span>*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
+
+
+                                {
+                                    data.testSteps.map((item, index) => {
+                                        return (
+                                            <TestFlowForm key={index} activeStep={index} active={
+                                                activeStep === index
+                                            } />
+                                        )
+                                    })
+                                }
+
+
+
+                                <div className="addStep connectStep">
+                                    {/*<div className="connectStepName"><img src="/images/connectStep.png" alt=""/>*/}
+                                    {/*    <span>4</span>*/}
+                                    {/*</div>*/}
+                                    <button
+                                        onClick={
+                                            () => {
+
+                                                dispatch(addStep());
+                                            }
                                         }
-                                    }
-                                    desc="Birden fazla input eklemek için dosya ekle butonunu kullanın" />
-
-                                <Text
-                                    name="Not Ekle"
-                                    id="note"
-                                    placeholder=""
-                                    />
-                                <div className="formButton">
-                                    <button className="cancelBtn" type="submit">İptal</button>
-                                    <button type="submit">Kaydet</button>
+                                        className="addStepBtn"><img src="/images/add.svg" alt=""/> Adım Ekle
+                                    </button>
                                 </div>
-                                <div className="addStep">
-                                        <img src="/images/connect.png" alt=""/>
-                                        <button className="addStepBtn"><img src="/images/add.svg" alt=""/>
-                                            Adım Ekle
-                                        </button>
-                                </div>
-                            </form>
+                            </div>
+                            <div className="formButton">
+                                <button
+                                    onClick={
+                                        () => {
+                                            router.push('/testCalendar');
+                                        }
+                                    }
+                                    type="button"><img src="/images/right.svg" alt=""/> Çalışma Takvimine Geç</button>
+                            </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>

@@ -1,5 +1,11 @@
 import Step from "@/components/Step";
+import {useRouter} from "next/router";
+import fromApi from "@/utils/fromApi";
+import {useSelector} from "react-redux";
 const TestCalendar = () => {
+    const router = useRouter();
+    const {activeStep,data} = useSelector(state => state.stepData);
+
     return (
         <section id="fluidContent">
             <div className="centerWrapper">
@@ -89,7 +95,13 @@ const TestCalendar = () => {
                                 gerçekleşecektir. </p>
                         </div>
                         <div className="formButton">
-                            <button type="submit"><img src="/images/right.svg" /> Devam et</button>
+                            <button
+                                onClick={
+                                    () => {
+                                        router.push("/testPlan");
+                                    }
+                                }
+                                type="button"><img src="/images/right.svg" /> Devam et</button>
                         </div>
                     </div>
                 </div>

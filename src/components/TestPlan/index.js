@@ -1,9 +1,39 @@
 import Step from "@/components/Step";
 import SelectArea from "@/components/TestPlan/SelectArea";
+import fromApi from "@/utils/fromApi";
+import {useEffect, useState} from "react";
 function TestPlan() {
 
-    const handleSelect = (e) => {
+    const [platformList, setPlatformList] = useState([]);
+    const [osList, setOsList] = useState([]);
+    const [browserList, setBrowserList] = useState([]);
+
+    useEffect(
+        () => {
+            fromApi("GET", "operator/platform", null, (res) => {
+                setPlatformList(res.data)
+            });
+        }, []
+    )
+
+    const handleSelect = (e,operationName) => {
         console.log(e);
+        if (operationName === 'platformList') {
+            setOsList([]);
+            e.map((item) => {
+                fromApi("GET", "operator/operating-system/"+item, null, (res) => {
+                    setOsList(osList => [...osList, ...res.data])
+                });
+            })
+        }else if (operationName === 'osList') {
+            if (e.length === 0) {
+                setBrowserList([]);
+            }else{
+                fromApi("GET", "operator/browser/", null, (res) => {
+                    setBrowserList(res.data)
+                });
+            }
+        }
     }
 
     return (
@@ -23,32 +53,27 @@ function TestPlan() {
                             <div className="formBoxV3">
                                 <SelectArea
                                     name="Platform seçimi"
-                                    options={[
-                                        { id: 1, name: 'Desktop', img: '/images/pc.png' },
-                                        { id: 2, name: 'Tablet', img: '/images/tablet.png' },
-                                        { id: 3, name: 'Mobil', img: '/images/mobile.png' },
-                                    ]}
-                                    selectHandle={handleSelect}
+                                    options={platformList}
+                                    selectHandle={
+                                        (e) => handleSelect(e, 'platformList')
+                                    }
                                 />
 
-                                <SelectArea
-                                    name="İşletim sistemi seçimi"
-                                    options={[
-                                        { id: 1, name: 'Mac OS', img: '/images/apple.png' },
-                                        { id: 2, name: 'Windows', img: '/images/windows.png' },
-                                        { id: 3, name: 'Linux', img: '/images/linux.png' }
-                                        ]}
-                                />
-                                <SelectArea
-                                    name="Browser seçimi"
-                                    options={[
-                                        { id: 1, name: 'Chrome', img: '/images/chrome.png' },
-                                        { id: 2, name: 'Firefox', img: '/images/firefox.png' },
-                                        { id: 3, name: 'Safari', img: '/images/safari.png' },
-                                        { id: 4, name: 'Opera', img: '/images/opera.png' },
-                                        { id: 5, name: 'Edge', img: '/images/edge.png' }
-                                    ]}
-                                />
+                                {
+                                    osList.length > 0 && <SelectArea
+                                        name="İşletim sistemi seçimi"
+                                        options={osList}
+                                        selectHandle={
+                                            (e) => handleSelect(e, 'osList')
+                                        }
+                                    />
+                                }
+                                {
+                                    browserList.length > 0 && <SelectArea
+                                        name="Browser seçimi"
+                                        options={browserList}
+                                    />
+                                }
                                 <div className="toggleSwitch">
                                     <input type="checkbox" id="screen"/><label htmlFor="screen"></label><span>Test ekran görüntüsü al</span>
                                     <input type="checkbox" id="video"/><label htmlFor="video"></label><span>Test videosu kaydı al</span>
