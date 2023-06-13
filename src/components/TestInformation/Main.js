@@ -38,7 +38,10 @@ const Main = () => {
                     // add tag to array
                     dispatch(updateStateData(
                         {
-                            tagList: [...data.tagList, {name: e.target.value}]
+                            tagList: [...data.tagList, {
+                                id: data.tagList.length + 1,
+                                name: e.target.value
+                            }]
                         }
                     ));
                     e.target.value = '';

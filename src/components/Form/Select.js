@@ -9,6 +9,13 @@ export const Select = ({ name, id, options, onChange, selected}) => {
                 onChange={onChange}
                 defaultValue={selected || options[0]?.id}
             >
+                <option
+                    value={0}
+                    disabled
+                    selected
+                >
+                    {name}
+                </option>
                 {options.map((option,key) => (
                     <option
                         key={key}
